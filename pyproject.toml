@@ -1,7 +1,7 @@
 [project]
 name = "puls-events-rag"
 version = "0.1.0"
-description = ""
+description = "POC d'un chatbot RAG avec Flask, FAISS et Mistral."
 authors = [
     {name = "Cyrille Elie",email = "cyrille.elie@gmail.com"}
 ]
@@ -12,8 +12,6 @@ dependencies = [
     "faiss-cpu (>=1.11.0,<2.0.0)",
     "mistralai (>=1.8.2,<2.0.0)",
     "sentence-transformers (>=4.1.0,<5.0.0)",
-    "fastapi (>=0.115.13,<0.116.0)",
-    "uvicorn[standard] (>=0.34.3,<0.35.0)",
     "pandas (>=2.3.0,<3.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)",
     "requests (>=2.32.4,<3.0.0)",
@@ -21,12 +19,16 @@ dependencies = [
     "langchain-huggingface (>=0.3.0,<0.4.0)",
     "langchain-mistralai (>=0.2.10,<0.3.0)",
     "flask (>=3.1.1,<4.0.0)",
-    "gunicorn (>=23.0.0,<24.0.0)"
+    "gunicorn (>=23.0.0,<24.0.0)",
+    "langchain-community (>=0.3.26,<0.4.0)"
 ]
 
 [tool.poetry]
+name = "puls-events-rag"
+version = "0.1.0"
+description = "POC d'un chatbot RAG avec Flask, FAISS et Mistral."
+authors = ["Cyrille Elie <cyrille.elie@gmail.com>"]
 packages = [{include = "puls_events_rag", from = "src"}]
-
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"
