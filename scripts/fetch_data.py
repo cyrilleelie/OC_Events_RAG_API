@@ -11,7 +11,7 @@ from puls_events_rag import config
 
 # --- Configuration Opendatasoft ---
 load_dotenv()
-API_KEY = os.getenv("OPENDATASOFT_API_KEY")
+API_KEY = os.getenv("OPENDATA_API_KEY")
 
 PORTAL_URL = "https://data.nantesmetropole.fr"
 DATASET_ID = "244400404_agenda-evenements-nantes-nantes-metropole"
