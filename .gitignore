@@ -1,0 +1,23 @@
+# Fichiers de secrets
+.env
+*.env
+
+# Environnement virtuel de Poetry
+.venv
+/env/
+
+# Caches et fichiers générés par Python
+__pycache__/
+*.pyc
+
+# Données brutes et base vectorielle (souvent volumineux)
+/data/
+/vector_store/
+
+# Fichiers IDE et OS
+.vscode/
+.idea/
+.DS_Store
+
+# Autres
+CHECKLIST.md

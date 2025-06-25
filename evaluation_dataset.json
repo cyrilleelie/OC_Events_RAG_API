@@ -1,0 +1,18 @@
+[
+    {
+        "question": "Parle-moi de l'exposition à la HAB Galerie.",
+        "ground_truth": "L'exposition à la HAB Galerie est celle de l'artiste Gloria Friedmann, intitulée 'Combien de terres faut-il à l’homme ?'. Elle s'inspire d'une nouvelle de Léon Tolstoï sur la cupidité et la vanité des désirs humains. L'entrée est libre."
+    },
+    {
+        "question": "Quels sont les horaires de l'exposition de Gloria Friedmann en juillet 2025 ?",
+        "ground_truth": "En juillet 2025, l'exposition de Gloria Friedmann est ouverte tous les jours de 10h à 19h."
+    },
+    {
+        "question": "Je cherche un événement autour de l'écriture.",
+        "ground_truth": "La bibliothèque municipale propose un 'Atelier d'écriture de nouvelles' pour apprendre les bases de la narration courte, qui est ouvert à tous les niveaux."
+    },
+    {
+        "question": "Quel est le sujet de l'exposition 'Urbex 44' ?",
+        "ground_truth": "L'exposition de photographie 'Urbex 44' permet de découvrir les lieux abandonnés de la région nantaise à travers l'objectif du photographe K. Furtif."
+    }
+]
