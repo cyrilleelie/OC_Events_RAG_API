@@ -1,14 +1,9 @@
 # api/main.py (Version avec FLASK)
 
 from flask import Flask, request, jsonify
-import sys
-import os
-
-# Ajouter le chemin racine du projet au PYTHONPATH
-# (La même astuce que pour FastAPI est nécessaire ici aussi)
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from puls_events_rag.rag_chain import create_rag_chain
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- Initialisation de l'application Flask ---
 app = Flask(__name__)

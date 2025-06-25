@@ -6,11 +6,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
+from puls_events_rag import config
 
 # --- Configuration ---
-DATA_PATH = "data/events_244400404_agenda-evenements-nantes-nantes-metropole.csv"
-VECTOR_STORE_PATH = "vector_store" # Le dossier où sera sauvegardé l'index FAISS
-MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+DATA_PATH = config.DATA_PATH
+VECTOR_STORE_PATH = config.VECTOR_STORE_PATH
+MODEL_NAME = config.EMBEDDING_MODEL_NAME
 
 # --- 1. Chargement des données ---
 print("Étape 1/5 : Chargement des données depuis le fichier CSV...")
@@ -49,8 +50,8 @@ print(f"-> {len(documents)} documents créés.")
 # --- 3. Découpage des documents en chunks ---
 print("\nÉtape 3/5 : Découpage des documents en chunks...")
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,  # Taille de chaque chunk en caractères
-    chunk_overlap=200, # Chevauchement entre les chunks pour ne pas perdre de contexte
+    chunk_size=config.CHUNK_SIZE,
+    chunk_overlap=config.CHUNK_OVERLAP,
     length_function=len,
 )
 split_chunks = text_splitter.split_documents(documents)

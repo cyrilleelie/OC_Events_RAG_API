@@ -14,12 +14,8 @@ from ragas.metrics import (
     context_precision,
 )
 
-# --- Configuration et imports de notre projet ---
-# S'assurer que le chemin racine est dans le PYTHONPATH pour trouver notre module
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from puls_events_rag.rag_chain import create_rag_chain
+from puls_events_rag import config
 
 # --- Chargement des dépendances pour le retriever ---
 # (Nécessaire pour récupérer le contexte)

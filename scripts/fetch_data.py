@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import requests
 from dotenv import load_dotenv
+from puls_events_rag import config
 
 # --- Configuration Opendatasoft ---
 load_dotenv()
@@ -19,7 +20,7 @@ API_ENDPOINT = f"{PORTAL_URL}/api/explore/v2.1/catalog/datasets/{DATASET_ID}/rec
 RECORDS_PER_PAGE = 100
 
 os.makedirs("data", exist_ok=True)
-OUTPUT_FILE = f"data/events_{DATASET_ID}.csv"
+OUTPUT_FILE = config.DATA_PATH
 
 def clean_html(raw_html: str) -> str:
     """Supprime les balises HTML et les retours à la ligne excessifs."""
@@ -45,7 +46,7 @@ def fetch_all_records() -> list:
             "where": where_clause, "apikey": API_KEY
         }
         try:
-            response = requests.get(API_ENDPOINT, params=params)
+            response = requests.get(config.API_ENDPOINT, params=params)
             response.raise_for_status()
             data = response.json()
             records = data.get("results", [])
