@@ -29,6 +29,7 @@ puls-events-rag/
 ├── Dockerfile
 ├── README.md                 # Ce fichier
 ├── main.py                   # Point d'entrée de l'API Flask
+├── app_streamlit.py          # Point d'entrée de l'interface Streamlit
 ├── evaluation_dataset.json   # Jeu de test pour l'évaluation Ragas
 ├── pyproject.toml            # Dépendances et configuration Poetry
 ├── poetry.lock
@@ -89,6 +90,21 @@ Vous pouvez modifier ce fichier pour :
 4.  **Exécuter le pipeline de données :**
     * `poetry run python scripts/fetch_data.py`
     * `poetry run python scripts/create_vector_store.py`
+
+## 💬 Lancement de l'Interface de Chat (Streamlit)
+
+C'est la méthode la plus simple pour interagir avec le chatbot.
+
+1.  **Assurez-vous que les dépendances de développement sont installées** (normalement fait par `poetry install`). Sinon, ajoutez Streamlit :
+    ```bash
+    poetry add streamlit --group dev
+    ```
+
+2.  **Lancez l'application Streamlit :**
+    ```bash
+    poetry run streamlit run app_streamlit.py
+    ```
+    Votre navigateur s'ouvrira automatiquement sur l'interface du chatbot. La première question posée peut prendre du temps (chargement des modèles).
 
 ## 🐳 Lancement via Docker (Méthode recommandée)
 
