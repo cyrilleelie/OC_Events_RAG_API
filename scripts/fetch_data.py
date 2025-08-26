@@ -12,11 +12,6 @@ from puls_events_rag import config
 # --- Configuration Opendatasoft ---
 load_dotenv()
 API_KEY = os.getenv("OPENDATA_API_KEY")
-
-PORTAL_URL = "https://data.nantesmetropole.fr"
-DATASET_ID = "244400404_agenda-evenements-nantes-nantes-metropole"
-API_ENDPOINT = f"{PORTAL_URL}/api/explore/v2.1/catalog/datasets/{DATASET_ID}/records"
-
 RECORDS_PER_PAGE = 100
 
 os.makedirs("data", exist_ok=True)
@@ -37,7 +32,7 @@ def fetch_all_records() -> list:
     one_year_ago = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
     where_clause = f"date > date'{one_year_ago}'"
 
-    print(f"Début de la récupération pour le dataset '{DATASET_ID}'...")
+    print(f"Début de la récupération pour le dataset '{config.DATASET_ID}'...")
     
     while True:
         print(f"Récupération de {RECORDS_PER_PAGE} enregistrements (offset: {offset})...")
@@ -77,7 +72,7 @@ def process_and_structure_records(records: list) -> pd.DataFrame:
             processed_data.append({
                 "uid": fields.get("id_manif"),
                 "title": fields.get("nom"),
-                "description": clean_html(fields.get("description")),
+                "description": fields.get("description_evt"),
                 "date_text": fields.get("date"), # On renomme pour plus de clarté
                 "location_name": fields.get("lieu"),
                 "location_address": fields.get("adresse"),
