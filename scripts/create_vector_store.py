@@ -8,18 +8,14 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from puls_events_rag import config
 
-# --- Configuration ---
-DATA_PATH = config.DATA_PATH
-VECTOR_STORE_PATH = config.VECTOR_STORE_PATH
-MODEL_NAME = config.EMBEDDING_MODEL_NAME
-
 # --- 1. Chargement des données ---
 print("Étape 1/5 : Chargement des données depuis le fichier CSV...")
-if not os.path.exists(DATA_PATH):
-    raise FileNotFoundError(f"Le fichier de données n'a pas été trouvé : {DATA_PATH}")
+if not os.path.exists(config.DATA_PATH):
+    raise FileNotFoundError(f"Le fichier de données n'a pas été trouvé : {config.DATA_PATH}")
 
-df = pd.read_csv(DATA_PATH)
-df.fillna("", inplace=True) # Remplacer les NaN par des chaînes vides
+df = pd.read_csv(config.DATA_PATH)
+for col in df.select_dtypes(include=['object']).columns:
+    df[col] = df[col].fillna("") # Remplacer les NaN par des chaînes vides
 print(f"-> {len(df)} événements chargés.")
 
 # --- 2. Création des Documents LangChain ---
@@ -37,7 +33,7 @@ for _, row in df.iterrows():
     )
     
     metadata = {
-        "source": DATA_PATH,
+        "source": config.DATA_PATH,
         "event_uid": row.get('uid', ''),
         "title": row.get('title', ''),
         "url": row.get('url', ''),
@@ -60,7 +56,7 @@ print(f"-> Les documents ont été découpés en {len(split_chunks)} chunks.")
 # --- 4. Création des embeddings et de l'index FAISS ---
 # Cette étape peut prendre du temps la première fois car elle télécharge le modèle.
 print("\nÉtape 4/5 : Chargement du modèle d'embedding (peut être long au premier lancement)...")
-embeddings_model = HuggingFaceEmbeddings(model_name=MODEL_NAME)
+embeddings_model = HuggingFaceEmbeddings(model_name=config.EMBEDDING_MODEL_NAME)
 
 print("\nCréation de l'index vectoriel FAISS...")
 # C'est ici que LangChain fait la magie : il prend les chunks, calcule les embeddings
@@ -70,6 +66,6 @@ print("-> Index FAISS créé en mémoire.")
 
 # --- 5. Sauvegarde de l'index ---
 print("\nÉtape 5/5 : Sauvegarde de l'index FAISS sur le disque...")
-os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
-vector_store.save_local(VECTOR_STORE_PATH)
-print(f"\nSUCCÈS ! L'index vectoriel a été créé et sauvegardé dans le dossier '{VECTOR_STORE_PATH}'.")
+os.makedirs(config.VECTOR_STORE_PATH, exist_ok=True)
+vector_store.save_local(config.VECTOR_STORE_PATH)
+print(f"\nSUCCÈS ! L'index vectoriel a été créé et sauvegardé dans le dossier '{config.VECTOR_STORE_PATH}'.")
