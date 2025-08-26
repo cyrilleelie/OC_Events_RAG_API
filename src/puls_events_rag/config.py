@@ -19,8 +19,6 @@ VECTOR_STORE_PATH = "vector_store"
 # --- Configuration des Modèles ---
 EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 LLM_MODEL_NAME = "mistral-large-latest"
-MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # --- Configuration d'Ollama ---
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
