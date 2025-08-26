@@ -1,7 +1,7 @@
 [
     {
-        "question": "Parle-moi de l'exposition à la HAB Galerie.",
-        "ground_truth": "L'exposition à la HAB Galerie est celle de l'artiste Gloria Friedmann, intitulée 'Combien de terres faut-il à l’homme ?'. Elle s'inspire d'une nouvelle de Léon Tolstoï sur la cupidité et la vanité des désirs humains. L'entrée est libre."
+        "question": "Parle moi de l'événement 'Le bruit des bottes'",
+        "ground_truth": "L'événement 'Le bruit des bottes' est un spectacle théâtral-poème, dirigé par Romain Weintzem. Il se déroule du 31 mars au 2 avril 2026 à 20h. Cette œuvre alerte sur l'état de nos démocraties et la montée de l'extrémisme en utilisant une représentation burlesque du défilé militaire. Durée : 1h30."
     },
     {
         "question": "Quels sont les horaires de l'exposition de Gloria Friedmann en juillet 2025 ?",
@@ -12,7 +12,7 @@
         "ground_truth": "La bibliothèque municipale propose un 'Atelier d'écriture de nouvelles' pour apprendre les bases de la narration courte, qui est ouvert à tous les niveaux."
     },
     {
-        "question": "Quel est le sujet de l'exposition 'Urbex 44' ?",
-        "ground_truth": "L'exposition de photographie 'Urbex 44' permet de découvrir les lieux abandonnés de la région nantaise à travers l'objectif du photographe K. Furtif."
+        "question": "Quand a lieu le concert de Jazzy Bazz ?",
+        "ground_truth": "Le concert de Jazzy Bazz a lieu samedi 8 novembre 2025 à 20h30."
     }
 ]
