@@ -16,6 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ /app/src/
 COPY api /app/api/
 COPY scripts/ /app/scripts/
+COPY .env .
 
 # --- DÉFINITION DES VARIABLES D'ENVIRONNEMENT ---
 # Indique à Python où trouver le module 'puls_events_rag'

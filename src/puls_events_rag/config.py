@@ -1,5 +1,8 @@
 # src/puls_events_rag/config.py
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- AJOUT : Sélecteur de fournisseur de LLM ---
 # Lit la variable d'environnement LLM_PROVIDER.
